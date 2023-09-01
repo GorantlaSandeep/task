@@ -1,0 +1,38 @@
+<!DOCTYPE html>
+<html>
+<head>
+    <title>Expense Tracker</title>
+</head>
+<body>
+    <h1>Expense Tracker</h1>
+    <input type="text" id="expenseInput" placeholder="Enter expense">
+    <button onclick="addExpense()">Add Expense</button>
+    <ul id="expenseList"></ul>
+    
+    <script>
+        const expenses = [];
+
+        function addExpense() {
+            const expenseInput = document.getElementById('expenseInput');
+            const expense = expenseInput.value;
+
+            if (expense.trim() !== '') {
+                expenses.push(expense);
+                expenseInput.value = '';
+                updateExpenseList();
+            }
+        }
+
+        function updateExpenseList() {
+            const expenseList = document.getElementById('expenseList');
+            expenseList.innerHTML = '';
+
+            for (const expense of expenses) {
+                const li = document.createElement('li');
+                li.textContent = expense;
+                expenseList.appendChild(li);
+            }
+        }
+    </script>
+</body>
+</html>
